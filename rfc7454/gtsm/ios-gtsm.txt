@@ -1,0 +1,14 @@
+# Configuration
+
+router bgp 703
+ ...
+ neighbor 72.0.0.2 ttl-security hops 1
+!
+
+
+# Monitoring 
+
+Upstream3>show ip bgp neighbors 72.0.0.2 | include TTL
+
+Connection is ECN Disabled, Mininum incoming TTL 254, Outgoing TTL 255
+

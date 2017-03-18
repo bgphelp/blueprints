@@ -1,0 +1,18 @@
+# Configuration 
+
+set protocols bgp group EBGP-Downstream-Full-View neighbor 120.0.4.18 ttl 255
+
+set firewall filter ttl-security term gtsm from source-address 120.0.4.18/32
+set firewall filter ttl-security term gtsm from protocol tcp
+set firewall filter ttl-security term gtsm from ttl-except 255
+set firewall filter ttl-security term gtsm from port 179
+set firewall filter ttl-security term gtsm then discard
+set firewall filter ttl-security term permit-all then accept
+set interfaces ge-0/0/0.520 family inet filter input ttl-security
+
+
+
+# Monitoring 
+root@PE2-vMX> show bgp neighbor 120.0.4.18
+...
+  Options: <Preference AuthKey Ttl AddressFamily PeerAS PrefixLimit Refresh>

@@ -1,0 +1,53 @@
+# Check TTL Value (255) in IP Header 
+
+root@PE2-vMX> monitor traffic interface ge-0/0/0.520 extensive size 1500 no-resolve
+Address resolution is OFF.
+Listening on ge-0/0/0.520, capture size 1500 bytes
+
+16:23:19.976662  In
+	Juniper PCAP Flags [Ext, no-L2, In], PCAP Extension(s) total length 22
+	  Device Media Type Extension TLV #3, length 1, value: Ethernet (1)
+	  Logical Interface Encapsulation Extension TLV #6, length 1, value: Ethernet (14)
+	  Device Interface Index Extension TLV #1, length 2, value: 140
+	  Logical Interface Index Extension TLV #4, length 4, value: 335
+	  Logical Unit Number Extension TLV #5, length 4, value: 520
+	-----original packet-----
+	PFE proto 2 (ipv4): (tos 0xc0, ttl 255, id 43786, offset 0, flags [DF], proto: TCP (6), length: 81) 120.0.4.18.14019 > 120.0.4.17.179: P 2553866318:2553866339(21) ack 3165473382 win 16138 <md5 b7e132998b2d84582f2504a837fa1d10,eol>: BGP, length: 21
+	Notification Message (3), length: 21, Cease (6), subcode Administratively Reset (4)
+16:23:19.979089  In
+	Juniper PCAP Flags [Ext, no-L2, In], PCAP Extension(s) total length 22
+	  Device Media Type Extension TLV #3, length 1, value: Ethernet (1)
+	  Logical Interface Encapsulation Extension TLV #6, length 1, value: Ethernet (14)
+	  Device Interface Index Extension TLV #1, length 2, value: 140
+	  Logical Interface Index Extension TLV #4, length 4, value: 335
+	  Logical Unit Number Extension TLV #5, length 4, value: 520
+	-----original packet-----
+	PFE proto 2 (ipv4): (tos 0xc0, ttl 255, id 43787, offset 0, flags [DF], proto: TCP (6), length: 60) 120.0.4.18.14019 > 120.0.4.17.179: FP 21:21(0) ack 1 win 16138 <md5 a08a2a88c60216b13182883ad39c2beb,eol>
+16:23:19.979177 Out
+	Juniper PCAP Flags [Ext], PCAP Extension(s) total length 22
+	  Device Media Type Extension TLV #3, length 1, value: Ethernet (1)
+	  Logical Interface Encapsulation Extension TLV #6, length 1, value: Ethernet (14)
+	  Device Interface Index Extension TLV #1, length 2, value: 140
+	  Logical Interface Index Extension TLV #4, length 4, value: 335
+	  Logical Unit Number Extension TLV #5, length 4, value: 520
+	-----original packet-----
+	00:0c:29:a1:f5:b3 > 00:50:56:89:07:20, ethertype 802.1Q (0x8100), length 78: vlan 520, p 6, ethertype IPv4, (tos 0xc0, ttl 255, id 30829, offset 0, flags [none], proto: TCP (6), length: 60) 120.0.4.17.179 > 120.0.4.18.14019: . 1:1(0) ack 22 win 16384 <nop,nop,md5 0453a93946b0150c9d5cd7c2455bfb72>
+16:23:19.982175 Out
+	Juniper PCAP Flags [Ext], PCAP Extension(s) total length 22
+	  Device Media Type Extension TLV #3, length 1, value: Ethernet (1)
+	  Logical Interface Encapsulation Extension TLV #6, length 1, value: Ethernet (14)
+	  Device Interface Index Extension TLV #1, length 2, value: 140
+	  Logical Interface Index Extension TLV #4, length 4, value: 335
+	  Logical Unit Number Extension TLV #5, length 4, value: 520
+	-----original packet-----
+	00:0c:29:a1:f5:b3 > 00:50:56:89:07:20, ethertype 802.1Q (0x8100), length 78: vlan 520, p 6, ethertype IPv4, (tos 0xc0, ttl 255, id 30832, offset 0, flags [none], proto: TCP (6), length: 60) 120.0.4.17.179 > 120.0.4.18.14019: F 1:1(0) ack 22 win 16384 <nop,nop,md5 7d78b321b7bd8337ae6adfe59691d221>
+16:23:20.114568  In
+	Juniper PCAP Flags [Ext, no-L2, In], PCAP Extension(s) total length 22
+	  Device Media Type Extension TLV #3, length 1, value: Ethernet (1)
+	  Logical Interface Encapsulation Extension TLV #6, length 1, value: Ethernet (14)
+	  Device Interface Index Extension TLV #1, length 2, value: 140
+	  Logical Interface Index Extension TLV #4, length 4, value: 335
+	  Logical Unit Number Extension TLV #5, length 4, value: 520
+	-----original packet-----
+	PFE proto 2 (ipv4): (tos 0xc0, ttl 255, id 43788, offset 0, flags [DF], proto: TCP (6), length: 60) 120.0.4.18.14019 > 120.0.4.17.179: . 22:22(0) ack 2 win 16138 <md5 2ea271a45238f57df88a70c6472cf191,eol>
+

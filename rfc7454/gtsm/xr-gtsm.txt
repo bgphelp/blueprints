@@ -1,0 +1,21 @@
+# Configuration 
+
+router bgp 100
+ neighbor-group Upstreams
+  ttl-security
+ !
+ neighbor 72.0.0.1
+  remote-as 703
+  use neighbor-group Upstreams
+ !
+!
+
+
+# Monitoring
+
+RP/0/0/CPU0:PE3-XR#show bgp neighbor 72.0.0.1
+Fri Mar 17 14:43:36.644 UTC
+
+BGP neighbor is 72.0.0.1
+  ...
+  TTL security is configured
