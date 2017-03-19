@@ -1,0 +1,6 @@
+root@PE2-vMX> monitor traffic interface ge-0/0/0.520 size 1500
+
+13:03:23.675417 Out IP 120.0.4.17.49441 > 120.0.4.18.179: S 2712705751:2712705751(0) win 16384 
+ <mss 9442,nop,Enhanced Auth keyid 1 diglen 16 digest: 13feb1d6f69df1683f5f427094d1a863>
+
+

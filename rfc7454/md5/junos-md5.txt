@@ -1,0 +1,39 @@
+########## Simple Neighbor Key ##################
+
+# Configuration 
+set protocols bgp group EBGP-Downstream-Full-View neighbor 120.0.4.6 authentication-key "$9$JuUi.QF/0BEP5BEcyW8ZUj"
+
+# Monitoring 
+root@PE2-vMX# run show bgp neighbor 120.0.4.18 | no-more
+Peer: 120.0.4.18+23747 AS 111100 Local: 120.0.4.17+179 AS 100
+...
+  Authentication key is configured
+
+
+
+
+############### Key-Chain ########################
+
+# Configuration  
+set security authentication-key-chains key-chain ce5-keychain tolerance 30
+set security authentication-key-chains key-chain ce5-keychain key 0 secret "$9$iqPQ/CuEclFnclKMN-Hqm"
+set security authentication-key-chains key-chain ce5-keychain key 0 start-time "2016-1-1.00:00:00 +0000"
+set security authentication-key-chains key-chain ce5-keychain key 1 secret "$9$eDCW87g4ZjkPLxZj"
+set security authentication-key-chains key-chain ce5-keychain key 1 start-time "2017-1-1.00:00:00 +0000"
+
+set protocols bgp group EBGP-Downstream-Full-View neighbor 120.0.4.18 authentication-algorithm md5
+set protocols bgp group EBGP-Downstream-Full-View neighbor 120.0.4.18 authentication-key-chain ce5-keychain
+
+
+# Monitoring 
+
+root@PE2-vMX> show security keychain detail
+keychain                 Active-ID       Next-ID       Transition  Tolerance
+                       Send  Receive   Send  Receive
+ ce5-keychain            1     1        None  None     None        30
+  Id 0, Algorithm hmac-md5, State inactive-expired, Option basic
+  Start-time Fri Jan  1 00:00:00 2016, Mode send-receive
+  Id 1, Algorithm hmac-md5, State send-receive, Option basic
+  Start-time Sun Jan  1 00:00:00 2017, Mode send-receive
+  
+

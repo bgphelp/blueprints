@@ -1,0 +1,27 @@
+########## Simple Neighbor Key ##################
+
+# Configuration
+router bgp 111100
+ neighbor 120.0.4.17 password 7 030752180500
+
+# Monitoring
+
+ce11#show ip bgp neighbors 120.0.4.17
+BGP neighbor is 120.0.4.17,  remote AS 100, external link
+...
+
+SRTT: 882 ms, RTTO: 1767 ms, RTV: 885 ms, KRTT: 0 ms
+minRTT: 207 ms, maxRTT: 1003 ms, ACK hold: 200 ms
+uptime: 332351 ms, Sent idletime: 2077 ms, Receive idletime: 1501 ms
+Status Flags: active open
+Option Flags: nagle, path mtu capable, md5					<------ MD5 Configured 
+IP Precedence value : 6
+...
+
+
+
+############### Key-Chain ########################
+
+< NOT SUPPORTED >
+If you are aware of BGP Key-Chain Implementation on Cisco IOS devices, 
+please send configuration example to info@bgphelp.com

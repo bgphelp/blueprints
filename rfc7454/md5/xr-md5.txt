@@ -1,0 +1,56 @@
+########## Simple Neighbor Key ##################
+
+# Configuration
+router bgp 100
+ ...
+ neighbor 71.0.0.1
+  password encrypted 02050D480809
+ !
+....
+
+# Monitoring
+
+ <TBD>
+
+
+############### Key-Chain ########################
+
+# Configuration
+key chain AS702
+ key 0
+  accept-lifetime 00:00:00 january 01 2016 infinite
+  key-string password 0705344247191C1757
+  send-lifetime 00:00:00 january 01 2016 infinite
+  cryptographic-algorithm MD5
+ !
+ key 1
+  accept-lifetime 00:00:00 january 01 2017 infinite
+  key-string password 11030C0B1E020E1E
+  send-lifetime 00:00:00 january 01 2017 infinite
+  cryptographic-algorithm MD5
+ !
+!
+
+router bgp 100
+ neighbor 71.0.0.1
+  remote-as 702
+  keychain AS702
+ !
+
+# Monitoring
+
+RP/0/0/CPU0:PE3-XR#show key chain AS702
+Sat Mar 18 13:08:53.395 UTC
+
+Key-chain: AS702 -
+
+  Key 0 -- text "0705344247191C1757"
+    Cryptographic-Algorithm -- MD5
+    Send lifetime --  00:00:00, 01 Jan 2016 - Always valid  [Valid now]
+    Accept lifetime -- 00:00:00, 01 Jan 2016 - Always valid [Valid now]
+
+  Key 1 -- text "11030C0B1E020E1E"
+    Cryptographic-Algorithm -- MD5
+    Send lifetime --  00:00:00, 01 Jan 2017 - Always valid  [Valid now]
+    Accept lifetime -- 00:00:00, 01 Jan 2017 - Always valid [Valid now]
+
